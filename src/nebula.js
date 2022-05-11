@@ -4,6 +4,8 @@ import * as THREE from "../node_modules/three/build/three.module.js"
 
 
 
+
+
 let scene, camera, renderer, cloudGeo, cloudMaterial, cloudParticles = [], composer;
 
 
@@ -16,24 +18,24 @@ function init() {
     camera.rotation.z = 0.27;
 
     // add ambient light
-    let ambient = new THREE.AmbientLight(0x555555);
+    let ambient = new THREE.AmbientLight(0xbc8fb9);
     scene.add(ambient);
 
     // main light
-    let directionalLight = new THREE.DirectionalLight(0xff8c19);
+    let directionalLight = new THREE.DirectionalLight(0xfef0b7);
     directionalLight.position.set(0,0,1);
     scene.add(directionalLight);
 
     // different colour point lights
-    let orangeLight = new THREE.PointLight(0xcc6600,50,450,1.7);
+    let orangeLight = new THREE.PointLight(0xFFC0CB,50,450,1.7);
     orangeLight.position.set(200,300,100);
     scene.add(orangeLight);
 
-    let redLight = new THREE.PointLight(0xd8547e,50,450,1.7);
+    let redLight = new THREE.PointLight(0xFF0000,50,450,1.7);
     redLight.position.set(100,300,100);
     scene.add(redLight);
 
-    let blueLight = new THREE.PointLight(0x3677ac,50,450,1.7);
+    let blueLight = new THREE.PointLight(0x00FFBF,70,450,1.7);
     blueLight.position.set(300,300,200);
     scene.add(blueLight);
 
@@ -41,7 +43,7 @@ function init() {
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth,window.innerHeight);
     // add green fog
-    scene.fog = new THREE.FogExp2(0x2B3051, 0.001);
+    scene.fog = new THREE.FogExp2(0x1a1e41, 0.001);
     renderer.setClearColor(scene.fog.color);
     // Add scene to page as canvas element
     document.body.appendChild(renderer.domElement);
@@ -75,13 +77,19 @@ function init() {
     // const bloomEffect = new POSTPROCESSING.BloomEffect ({
     //     blendFunction: POSTPROCESSING.BlendFunction
     // })
-
+    window.addEventListener("resize", onWindowResize, false)
     render()
+}
+// Responsive
+function onWindowResize() {
+    camera.aspect=window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight)
 }
 // Set rendering loop
 function render() {
     cloudParticles.forEach(p => {
-        p.rotation.z -=0.001;
+        p.rotation.z -=0.0006;
     });
     renderer.render(scene,camera);
     requestAnimationFrame(render)
