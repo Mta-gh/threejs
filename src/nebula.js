@@ -11,11 +11,12 @@ let scene, camera, renderer, cloudGeo, cloudMaterial, cloudParticles = [], compo
 
 function init() {
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(60,window.innerWidth / window.innerHeight, 1,1000);
-    camera.position.z = 1;
+    camera = new THREE.PerspectiveCamera(120,window.innerWidth / window.innerHeight, 1,1000);
+    camera.position.z = 4;
     camera.rotation.x = 1.16;
     camera.rotation.y = -0.12;
     camera.rotation.z = 0.27;
+    
 
     // add ambient light
     let ambient = new THREE.AmbientLight(0xbc8fb9);
@@ -42,6 +43,10 @@ function init() {
     // add renderer
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth,window.innerHeight);
+
+    
+    
+
     // add green fog
     scene.fog = new THREE.FogExp2(0x1a1e41, 0.001);
     renderer.setClearColor(scene.fog.color);
@@ -49,6 +54,11 @@ function init() {
     document.body.appendChild(renderer.domElement);
     // smoke/cloud texture
     let loader = new THREE.TextureLoader();
+
+    const bgTexture = loader.load('assets/milkyway.jpg');
+    scene.background = bgTexture;
+    
+
     loader.load("assets/smoke-1.png", function(texture){
         cloudGeo = new THREE.PlaneBufferGeometry(500,500);
         cloudMaterial = new THREE.MeshLambertMaterial({
@@ -56,7 +66,7 @@ function init() {
             transparent: true
         });
 // loop for particles
-        for(let p=0; p<50; p++) {
+        for(let p=0; p<70; p++) {
             let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
             // random cloud position 
             cloud.position.set(
@@ -89,7 +99,7 @@ function onWindowResize() {
 // Set rendering loop
 function render() {
     cloudParticles.forEach(p => {
-        p.rotation.z -=0.0006;
+        p.rotation.z -=0.0005;
     });
     renderer.render(scene,camera);
     requestAnimationFrame(render)
