@@ -1,0 +1,61 @@
+.head-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 4;
+    flex-grow: 1;
+    margin-top: -50px;
+}
+h1 {
+    font-size: 15em;
+    color: #fff;
+    text-shadow: 0 0 8px rgb(255 255 255 / 80%);
+    margin: 0;
+}
+
+span {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 0 0 5px rgb(255 255 255 / 80%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Syne:wght@400;700&display=swap');
+
+
+h1 {
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: 'Syne', sans-serif;
+}
+
+span, a {
+    font-family: "DM Sans", sans-serif
+}
+
+.btn3 {
+    font-size: 2em;
+    color: white;
+    background-color: black;
+    transition: all .3s ease-in-out;
+    padding: 13px 23px ;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.btn3:hover {
+    background-color: aquamarine;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(127, 255, 212, .8);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
