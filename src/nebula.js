@@ -8,6 +8,11 @@ import {BloomPass} from 'https://threejsfundamentals.org/threejs/resources/three
 
 
 let scene, camera, renderer, cloudGeo, cloudMaterial, cloudParticles = [], composer;
+let quitInit = false
+
+// Enter the wormhole function
+let buttonWormhole = document.querySelector('.btn3');
+
 
 
 function init() {
@@ -45,17 +50,13 @@ function init() {
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth,window.innerHeight);
     
-    
-    
-    
     // add green fog
     scene.fog = new THREE.FogExp2(0x1a1e41, 0.001);
     renderer.setClearColor(scene.fog.color);
     // Add scene to page as canvas element
     document.body.appendChild(renderer.domElement);
     // smoke/cloud texture
-
-
+    
     let loader = new THREE.TextureLoader();
     const bgTexture = loader.load('assets/bubble2.jpg');
     bgTexture.minFilter = THREE.LinearFilter
@@ -91,8 +92,10 @@ function init() {
         });
         
         
+        
         window.addEventListener("resize", onWindowResize, false)
         render()
+        
     }
     // Responsive
     function onWindowResize() {
@@ -103,9 +106,31 @@ function init() {
     // Set rendering loop
     function render() {
         cloudParticles.forEach(p => {
-            p.rotation.z -=0.0006;
+            p.rotation.z -=0.0008;
         });
         renderer.render(scene,camera);
-        requestAnimationFrame(render)
+        if (quitInit === false){
+            requestAnimationFrame(render);
+        }
+        else {
+            console.log("system offline")
+        }
     }
     init()
+    
+    buttonWormhole.addEventListener("click", function() {
+        console.log('hello');
+        quitInit = true;
+        let navito = document.querySelector('.planet-nav');
+        navito.classList.add('active');
+        navito.style.transform = 'translateY(0%)';
+        document.querySelector('.planet-nav-title').classList.add('active-h2');
+        document.querySelector('.home-nav').classList.add('active-home-nav')
+
+        
+    });
+  
+    
+    
+    
+    
