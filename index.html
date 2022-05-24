@@ -16,7 +16,9 @@
     <script src="js/three.js"></script>
     <script src="js/main.js"></script>
 
-    <script>
+    <script type="module">
+
+import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js';
         const bgColour = {
             color: '#000000'
         };
@@ -29,9 +31,8 @@
         console.log(container)
         const scene = new THREE.Scene({ alpha: true }); // add aplha :true to allow alpha
         const camera = new THREE.PerspectiveCamera( 30, containerwidth / containerHeight, 0.1, 1000 );
-        // scene.background = new THREE.Color( bgColour.color );
         
-        const texture = new THREE.TextureLoader().load( 'assets/mars2.jpg' );
+        const texture = new THREE.TextureLoader().load( 'assets/mars.jpg' );
         
         
         const renderer = new THREE.WebGLRenderer();
@@ -46,6 +47,13 @@
         
         const sphere = new THREE.Mesh( geometry, material );
         scene.add( sphere );
+
+        // enable controls
+        const controls = new OrbitControls( camera, renderer.domElement );
+            // disable zoom 
+            controls.enableZoom = false;
+            controls.keys = false;
+            camera.position.z = 5;
         
         camera.position.z = 5;
         
