@@ -1,6 +1,6 @@
 .planet-container {
     width: 100vw;
-    height: 100vh;
+    height: 95vh;
 }
 
 canvas:focus-visible {
@@ -94,9 +94,17 @@ h2 {
     
 }
 
+.mars a {
+    font-family: 'Syne', sans-serif;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+}
 
-
-
+.mars a:hover {
+    color: aquamarine;
+    text-shadow: 0 0 4px aquamarine;
+}
 
 .planet-nav-title {
     transform: translateY(-100vh);
