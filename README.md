@@ -1,4 +1,4 @@
 # threejs
 Learning three.js
 
- https://mta-gh.github.io/threejs/nebula.html
+ https://mta-gh.github.io/threejs/
