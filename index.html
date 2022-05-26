@@ -30,7 +30,7 @@ import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/t
 
         console.log(container)
         const scene = new THREE.Scene({ alpha: true }); // add aplha :true to allow alpha
-        const camera = new THREE.PerspectiveCamera( 30, containerwidth / containerHeight, 0.1, 1000 );
+        const camera = new THREE.PerspectiveCamera( 50, containerwidth / containerHeight, 0.1, 1000 );
         
         const texture = new THREE.TextureLoader().load( 'assets/mars.jpg' );
         
@@ -64,6 +64,12 @@ import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/t
         }
         animate();
         
+        // Responsive
+    function onWindowResize() {
+        camera.aspect=containerwidth / containerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(containerwidth, containerHeight)
+    }
         
     </script>
 </body>
