@@ -1,3 +1,5 @@
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Syne:wght@400;700&display=swap');
+
 /* restet */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -387,10 +389,13 @@ canvas:focus-visible {
     margin-top: -50px;
 }
 h1 {
-    font-size: 15em;
+    font-size: 10em;
     color: #fff;
     text-shadow: 0 0 8px rgb(255 255 255 / 80%);
-    margin: 0;
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: 'Syne', sans-serif;
 }
 
 span {
@@ -400,15 +405,8 @@ span {
     text-shadow: 0 0 5px rgb(255 255 255 / 80%);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Syne:wght@400;700&display=swap');
 
-
-h1 {
-    letter-spacing: 1px;
-    font-weight: 700;
-    font-family: 'Syne', sans-serif;
-}
-
+ 
 span, a {
     font-family: "DM Sans", sans-serif
 }
@@ -467,7 +465,7 @@ h2 {
 
 .mars a:hover {
     color: aquamarine;
-    text-shadow: 0 0 4px aquamarine;
+    text-shadow: 0 0 2px aquamarine;
 }
 
 .planet-nav-title {
@@ -574,6 +572,70 @@ h2 {
 }
 
 
+
+
+
+
+  @media screen and (max-width: 768px) {
+    .active-h2 {
+        font-size: 0.7em;
+        box-shadow: none;
+        display: none;
+    }
+    .planet-nav {
+        padding: 2em;
+    }
+    .home-nav {
+        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .home-link {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        animation: none;
+        /* transform: scale(.8); */
+    }
+    .home-link p {
+        color: rgba(53,53,53,1);
+        font-size: 1em;
+    }
+    .planet-link {
+        animation: 2s pulsate infinite ;
+        animation-timing-function: linear;
+    }
+  }
+
+
+  @media screen and (max-width: 1140px) {
+    h1 {
+        font-size: 6em;
+        text-shadow: 0 0 4px rgba(255,255,255,.8);
+    }
+    span {
+        font-size: 3em;
+    }
+   
+}
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+        text-shadow: 0 0 4px rgba(255,255,255,.8);
+    }
+    span {
+        font-size: 2em;
+    }
+    .btn3 {
+    font-size: 1em;
+    }
+   
+}
+
+/* animations */
+
 @keyframes floating {
 	0% {transform: translatey(0px);}
 	50% {transform: translatey(-10px);}
@@ -586,30 +648,10 @@ h2 {
 	100% {transform: translatey(0px);}
 }
 
-
-@keyframes twinkle{
-    to{
-    background-image:  
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%), 
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%), 
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, rgba(0,0,0,0.4) 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%),
-    radial-gradient(circle, #000 20%, transparent 30%);  }
-  
-  }
-
-
-
+@keyframes pulsate {
+  0% {box-shadow: inset 10px 1px 13px rgb(0 0 0 / 50%), 5px 0 5px rgb(254 253 255 / 40%);}
+  25% {box-shadow: inset 10px 1px 13px rgb(0 0 0 / 50%), 0 -5px 5px rgb(254 253 255 / 40%);}
+  50% {box-shadow: inset 10px 1px 13px rgb(0 0 0 / 50%), -5px 0 5px rgb(254 253 255 / 40%);}
+  75% {box-shadow: inset 10px 1px 13px rgb(0 0 0 / 50%), 0 5px 5px rgb(254 253 255 / 40%);}
+  100% {box-shadow: inset 10px 1px 13px rgb(0 0 0 / 50%), 5px 0 5px rgb(254 253 255 / 40%);}
+}
